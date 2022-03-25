@@ -1,0 +1,208 @@
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap");
+
+:root {
+	--clr-primary-1: hsl(238, 29%, 16%);
+	--clr-primary-2: hsl(14, 88%, 65%);
+
+	--clr-neutral-1: hsl(237, 12%, 33%);
+	--clr-neutral-2: hsl(240, 6%, 50%);
+
+	--clr-divider: hsl(240, 5%, 91%);
+
+	--clr-bg-grad-1: hsl(273, 75%, 66%);
+	--clr-bg-grad-2: hsl(240, 73%, 65%);
+
+    --fs-heading:3.2rem
+    --fs-summary:1.5rem;
+    --fs-summary-detail:1.2rem;
+    --line-height-summary-detail:1.8rem;
+
+	--fw-400: 400;
+	--fw-700: 700;
+
+    --z-index-main:10;
+    --z-index-secondary:5;
+    --z-index-lowest:1;
+}
+
+html {
+	font-family: "Kumbh Sans", sans-serif;
+	font-size: 0.75rem;
+}
+
+body{
+    width: 100%;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    background-image: linear-gradient(var(--clr-bg-grad-1), var(--clr-bg-grad-2));
+}
+
+section.faq{
+    background-color: white;
+    border-radius: 2.3rem;
+    display: grid;
+    grid: 10.4rem max-content / 1fr;
+    gap: 2.8rem;
+    width: 90%;
+    max-width: 60rem;
+}
+
+section.faq__img-container{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    grid: "image-containers" 1fr / 1fr;
+}
+
+.main-images-container{
+    grid-area: image-containers;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    grid:"images" 1fr / 1fr;
+}
+
+.main-images-container > picture{
+    grid-area: images;
+
+}
+
+picture.faq__woman-illustration img{
+    width: 23.685rem;
+    height: auto;
+    transform: translate(0, -10.8rem);
+    position: relative;
+    z-index: var(--z-index-secondary);
+}
+
+picture.faq__shadow-illustration img{
+    transform: translate(0, -4.5rem);
+    width: 23.685rem;
+    z-index: var(--z-index-lowest);
+}
+
+img.faq__box-illustration{
+    display: none;
+    grid-area: image-containers;
+    z-index: var(--z-index-main);
+}
+
+section.faq__text-container{
+    padding: 0 2.4rem 4.48rem;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    gap: 3.8rem;
+}
+
+.faq__heading{
+    font-size: 4rem;
+    font-weight: var(--fw-700);
+    color: var(--clr-primary-1);
+}
+
+ul.faq__faqs-list{
+    padding-left: .5rem;
+    list-style: none;
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+li.faq__faq-item{
+    border-bottom: solid 1px var(--clr-divider);
+    cursor: pointer;
+    padding: 1.8rem .5rem 1.8rem;
+}
+
+.faq-item__detail{
+    max-height: 0;
+    overflow: hidden;
+}
+
+.faq-item__summary{
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    padding-right:   .5rem;
+    transition: font-weigth 250ms;
+    transition: color 250ms;
+}
+
+li.faq__faq-item:hover .faq-item__summary{
+    color: var(--clr-primary-2);
+}
+
+.faq__faq-item:is(.active) > .faq-item__summary{
+    font-weight: var(--fw-700);
+}
+
+img.faq-item__arrow-icon{
+    transition: transform 250ms;
+}
+
+.faq__faq-item:is(.active) img.faq-item__arrow-icon{
+    transform: rotate(180deg);
+}
+
+.faq-item__detail{
+    font-size: var(--fs-summary-detail);
+    line-height: var(--line-height-summary-detail);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 250ms ease, margin-top 250ms, margin-left 250ms;
+    color: var(--clr-neutral-1);
+}
+
+.faq__faq-item:is(.active) > .faq-item__detail {
+    margin-top: .2rem;
+    margin-left: .5rem;
+}
+
+.attribution{
+    position: absolute;
+    bottom: 0;
+}
+
+.attribution, .attribution a{
+    color: white;
+}
+
+
+@media screen and (min-width:1110px){
+    section.faq{
+        background-color: white;
+        grid: 1fr / 38.8rem 1fr;
+        gap: 8.7rem;
+        max-width: 92rem;
+        min-height: 50.9rem;
+    }
+    .main-images-container{
+        position: relative;
+        overflow: hidden;
+    }
+    picture.faq__woman-illustration img {
+        width: 47.2rem;
+        transform: translate(-8.5rem, 0);
+    }
+    picture.faq__shadow-illustration img{
+        position: absolute;
+        width: 96.4rem;
+        right: 0;
+        top:50%;
+        transform: translate(-20%, -55%)
+    }
+    img.faq__box-illustration{
+        display: block;
+        transform: translate(-19rem, 4rem);
+    }
+    section.faq__text-container{
+        width: 100%;
+        padding: 6.5rem 9.5rem 5rem 0;
+        align-items: flex-start;
+    }
+}
